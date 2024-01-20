@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: {{ name }}
+
+commonLabels:
+  {{ labels }}
+
+resources:
+{%- if configmap %}  - configmap.yaml {%- endif %}
+{%- if externalsecrets %}  - externalsecrets.yaml {%- endif %}
+{%- if ingress %}  - ingress.yaml {%- endif %}
+{%- if pvc %}  - pvc.yaml {%- endif %}
+{%- if reccuringJobs %}  - reccuringJobs.yaml {%- endif %}
+{%- if service %}  - service.yaml {%- endif %}
+{%- if additionalResources is not None and additionalResources !- "" %} {{ additionalResources }} {%- endif %}
+
+{%- if helm %}
+helmCharts:
+- name: {{ helm-name }}
+  includeCRDs: {{ helm-crds }}
+  releaseName: {{ helm-release }}
+  repo: {{ helm-repo }}
+  {%- if helm-values is not None and helm-values != "" }}values: {{ helm-values }}{%- endif }
+  version: {{ helm-version }}
+{%- endif %}

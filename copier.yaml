@@ -54,21 +54,21 @@ helm-name:
   default: "{{ name }}"
   when: "{{ helm }}"
 
-helm-includeCRDs:
+helm-crds:
   type: bool
   default: yes
   when: "{{ helm }}"
   help: |-
   If yes, set includeCRDs: true in helmCharts
 
-helm-repo:
-  type: str
-  help: The URL of the Helm repo
-  when: "{{ helm }}"
-
 helm-release:
   type: str
   help: The Helm releaseName
+  when: "{{ helm }}"
+
+helm-repo:
+  type: str
+  help: The URL of the Helm repo
   when: "{{ helm }}"
 
 helm-values:
@@ -81,5 +81,5 @@ helm-version:
   help: The Helm chart version
   when: "{{ helm }}"
 
-_subdirectory: template
+_subdirectory: tmpl
 _answers_file: .templated.yaml
