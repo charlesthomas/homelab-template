@@ -80,3 +80,6 @@ helm-version:
   type: str
   help: The Helm chart version
   when: {{ helm }}
+
+_subdirectory: template
+_answers_file: .templated.yaml
