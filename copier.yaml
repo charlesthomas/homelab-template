@@ -5,7 +5,7 @@ name:
 namespace:
   type: str
   help: The Kubernetes namespace
-  default: {{ name }}
+  default: "{{ name }}"
 
 labels:
   type: yaml
@@ -32,7 +32,7 @@ pvc:
 recurringJobs:
   type: bool
   help: Include Longhorn RecurringJobs backup-jobs.yaml in templated resources and Kustomization.
-  when: {{ pvc }}
+  when: "{{ pvc }}"
 
 service:
   type: bool
@@ -51,35 +51,35 @@ helm:
 helm-name:
   type: str
   help: The name of the Helm chart
-  default: {{ name }}
-  when: {{ helm }}
+  default: "{{ name }}"
+  when: "{{ helm }}"
 
 helm-includeCRDs:
   type: bool
   default: yes
-  when: {{ helm }}
+  when: "{{ helm }}"
   help: |-
   If yes, set includeCRDs: true in helmCharts
 
 helm-repo:
   type: str
   help: The URL of the Helm repo
-  when: {{ helm }}
+  when: "{{ helm }}"
 
 helm-release:
   type: str
   help: The Helm releaseName
-  when: {{ helm }}
+  when: "{{ helm }}"
 
 helm-values:
   type: str
   help: The Helm values.yaml (Leave blank if there isn't one)
-  when: {{ helm }}
+  when: "{{ helm }}"
 
 helm-version:
   type: str
   help: The Helm chart version
-  when: {{ helm }}
+  when: "{{ helm }}"
 
 _subdirectory: template
 _answers_file: .templated.yaml
