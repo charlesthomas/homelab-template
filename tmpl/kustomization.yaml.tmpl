@@ -13,7 +13,7 @@ resources:
 {%- if pvc %}  - pvc.yaml {%- endif %}
 {%- if reccuringJobs %}  - reccuringJobs.yaml {%- endif %}
 {%- if service %}  - service.yaml {%- endif %}
-{%- if additionalResources is not None and additionalResources !- "" %} {{ additionalResources }} {%- endif %}
+{%- if additionalResources != "" %} {{ additionalResources }} {%- endif %}
 
 {%- if helm %}
 helmCharts:
@@ -21,6 +21,6 @@ helmCharts:
   includeCRDs: {{ helm-crds }}
   releaseName: {{ helm-release }}
   repo: {{ helm-repo }}
-  {%- if helm-values is not None and helm-values != "" }}values: {{ helm-values }}{%- endif }
+  {%- if helm-values != "" %}values: {{ helm-values }}{%- endif %}
   version: {{ helm-version }}
 {%- endif %}
