@@ -48,34 +48,34 @@ helm:
   help: Include a helm block in your kustomization.yaml?
   default: no
 
-helm-name:
+helmName:
   type: str
   help: The name of the Helm chart
   default: "{{ name }}"
   when: "{{ helm }}"
 
-helm-release:
+helmRelease:
   type: str
   help: The Helm releaseName
   default: "{{ name }}"
   when: "{{ helm }}"
 
-helm-repo:
+helmRepo:
   type: str
   help: The URL of the Helm repo
   when: "{{ helm }}"
 
-helm-values:
+helmValues:
   type: str
   help: The Helm values.yaml (Leave blank if there isn't one)
   when: "{{ helm }}"
 
-helm-version:
+helmVersion:
   type: str
   help: The Helm chart version
   when: "{{ helm }}"
 
-helm-crds:
+helmCrds:
   type: bool
   default: yes
   when: "{{ helm }}"
