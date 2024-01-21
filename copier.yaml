@@ -81,5 +81,6 @@ helm-version:
   help: The Helm chart version
   when: "{{ helm }}"
 
-_subdirectory: tmpl
 _answers_file: .templated.yaml
+_subdirectory: tmpl
+_templates_suffix: tmpl
