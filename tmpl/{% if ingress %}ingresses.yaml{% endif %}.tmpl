@@ -10,6 +10,9 @@ metadata:
     {%- if ingWebSockets %}
     nginx.org/websocket-services: {{ svcName }}
     {% endif %}
+    {%- if ingExtraAnnotations %}
+    {{ ingExtraAnnotations }}
+    {%- endif %}
 spec:
   ingressClassName: {{ ingClass }}
   tls:
