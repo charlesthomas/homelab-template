@@ -1,0 +1,33 @@
+---
+ingClass:
+  when: "{{ ingress }}"
+  type: str
+  choices:
+    internal: nginx-crt-house
+    external: nginx-external
+
+ingHost:
+  when: "{{ ingress }}"
+  type: str
+  default: "{{ name }}.crt.{% if ingress.class == 'nginx-external' %}lol{% else %}house{% endif %}"
+  help: ingress hostname
+
+ingCname:
+  when: "{%if ingress and ingress.class == 'nginx-external' %}true{% endif %}"
+  type: str
+  default: crt.lol
+  help: ingress cname (only if accessible externally!)
+
+ingWebSockets:
+  when: "{{ ingress }}"
+  type: bool
+  help: enable web sockets on ingress
+  default: no
+
+ingPathType:
+  when: "{{ ingress }}"
+  type: str
+  choices:
+    Prefix: Prefix
+    ImplementationSpecific: ImplementationSpecific
+    Exact: Exact

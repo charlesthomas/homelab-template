@@ -1,0 +1,41 @@
+---
+svcName:
+  when: "{{ service }}"
+  type: str
+  default: "{{ name }}"
+
+svcType:
+  when: "{{ service }}"
+  type: str
+  choices:
+    ClusterIP: ClusterIP
+    LoadBalancer: LoadBalancer
+    NodePort: NodePort
+    ExternalName: ExternalName
+
+svcPortNum:
+  when: "{{ service }}"
+  type: int
+
+svcTargetPort:
+  when: "{{ service }}"
+  type: str
+  help: name of the port defined in the deployment / sts (MUST BE STRING!)
+
+svcProtocol:
+  when: "{{ service }}"
+  type: str
+  choices:
+    TCP: TCP
+    UDP: UDP
+
+svcPortName:
+  when: "{{ service }}"
+  type: str
+  default: "{{ svcTargetPort }}"
+  help: name of this service's port (MUST BE STRING!)
+
+svcSelector:
+  when: "{{ service }}"
+  type: str
+  default: "{{ labels }}"

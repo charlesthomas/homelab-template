@@ -1,3 +1,4 @@
+---
 helm:
   type: bool
   help: Include a helm block in your kustomization.yaml?

@@ -17,6 +17,10 @@ url:
 ---
 !include inc/helm.yaml
 ---
+!include inc/service.yaml
+---
+!include inc/ingress.yaml
+---
 _answers_file: .templated.yaml
 _subdirectory: tmpl
 _templates_suffix: tmpl

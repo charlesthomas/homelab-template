@@ -1,0 +1,15 @@
+---
+apiVersion: 1
+kind: Service
+metadata:
+  name: {{ svcName }}
+  namespace: {{ namespace }}
+spec:
+  type: {{ svcType }}
+  ports:
+  - port: {{ svcPortNum }}
+    targetPort: {{ svcTargetPort }}
+    protocol: {{ svcProtocol }}
+    name: {{ svcPortName }}
+  selector:
+    {{ svcSelector }}

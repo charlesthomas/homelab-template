@@ -1,3 +1,4 @@
+---
 labels:
   type: str
   help: Kustomization commonLabels
@@ -16,9 +17,14 @@ externalsecret:
   type: bool
   help: Include external-secrets.yaml in Kustomization.
 
+service:
+  type: bool
+  help: Include services.yaml in Kustomization.
+
 ingress:
   type: bool
   help: Include ingresses.yaml in Kustomization.
+  when: "{{ service }}"
 
 pvc:
   type: bool
@@ -29,10 +35,6 @@ recurringJobs:
   help: Include Longhorn RecurringJobs backup-jobs.yaml in Kustomization.
   when: "{{ pvc }}"
 
-service:
-  type: bool
-  help: Include services.yaml in Kustomization.
-
 sts:
   type: bool
   help: Include statefulsets.yaml in Kustomization.
@@ -40,7 +42,4 @@ sts:
 additionalResources:
   type: str
   placeholder: certificates,crds,rbac etc
-  help: |-
-  Comma-separated list of additional resources to append to Kustomization.resources.
-  DO NOT include file extension!
-  EG "certificates" NOT "certificates.yaml"
+  help: Comma-separated list of additional resources to append to Kustomization.resources. DO NOT include file extension! EG "certificates" NOT "certificates.yaml"
