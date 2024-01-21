@@ -11,8 +11,8 @@ spec:
   source:
     repoURL: {{ url }}
     targetRevision: HEAD
-  destinations:
-  - server: https://kubernetes.default.svc
+  destination:
+    server: https://kubernetes.default.svc
     namespace: {{ namespace }}
   syncPolicy:
     automated:
