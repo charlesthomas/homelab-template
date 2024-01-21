@@ -7,13 +7,27 @@ commonLabels:
   {{ labels }}
 
 resources:
-{%- if configmap %}  - configmap.yaml {%- endif %}
-{%- if externalsecrets %}  - externalsecrets.yaml {%- endif %}
-{%- if ingress %}  - ingress.yaml {%- endif %}
-{%- if pvc %}  - pvc.yaml {%- endif %}
-{%- if reccuringJobs %}  - reccuringJobs.yaml {%- endif %}
-{%- if service %}  - service.yaml {%- endif %}
-{%- if additionalResources != "" %} {{ additionalResources }} {%- endif %}
+{%- if configmap %}
+- configmaps.yaml
+{%- endif %}
+{%- if externalsecrets %}
+- external-secrets.yaml
+{%- endif %}
+{%- if ingress %}
+- ingresses.yaml
+{%- endif %}
+{%- if pvc %}
+- pvcs.yaml
+{%- endif %}
+{%- if reccuringJobs %}
+- reccuring-jobs.yaml
+{%- endif %}
+{%- if service %}
+- services.yaml
+{%- endif %}
+{%- for r in additionalResources.split(',') %}
+- {{ r }}.yaml
+{%- endfor %}
 
 {%- if helm %}
 helmCharts:
