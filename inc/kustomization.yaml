@@ -34,7 +34,7 @@ service:
   help: Include services.yaml in Kustomization.
 
 sts:
-  type bool
+  type: bool
   help: Include statefulsets.yaml in Kustomization.
 
 additionalResources:
