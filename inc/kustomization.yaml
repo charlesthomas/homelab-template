@@ -13,7 +13,7 @@ deployment:
   type: bool
   help: Include deployments.yaml in Kustomization.
 
-externalsecret:
+externalSecret:
   type: bool
   help: Include external-secrets.yaml in Kustomization.
 
@@ -30,9 +30,9 @@ pvc:
   type: bool
   help: Include pvcs.yaml in Kustomization.
 
-recurringJobs:
+backups:
   type: bool
-  help: Include Longhorn RecurringJobs backup-jobs.yaml in Kustomization.
+  help: Include Longhorn RecurringJobs backups.yaml in Kustomization.
   when: "{{ pvc }}"
 
 sts:
