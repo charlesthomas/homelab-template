@@ -5,19 +5,16 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ ingHost }}
     {%- if ingress.cname != "" %}
-    external-dns.alpha.kubernetes.io/hostname: {{ ingCname }}
+    external-dns.alpha.kubernetes.io/target: {{ ingCname }}
     {%- endif %}
     {%- if ingWebSockets %}
-    nginx.org/websocket-services: {{ svcName }}
+    nginx.org/websocket-services: {{ ingSvcName }}
     {% endif %}
-    {%- if ingExtraAnnotations %}
-    {{ ingExtraAnnotations }}
-    {%- endif %}
+    {%- for extra in ingExtraAnnotations.split("\n") %}
+    {{ extra }}
+    {%- endfor %}
 spec:
   ingressClassName: {{ ingClass }}
-  tls:
-    - hosts:
-      - {{ ingHost }}
   rules:
     - host: "{{ ingHost }}"
       http:
@@ -26,6 +23,10 @@ spec:
             pathType: {{ ingPathType }}
             backend:
               service:
-                name: {{ svcName }}
+                name: {{ ingSvcName }}
                 port:
-                  number: {{ svcPortNum }}
+                  number: {{ ingSvcPortNum }}
+  tls:
+    - hosts:
+      - {{ ingHost }}
+

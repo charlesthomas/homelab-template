@@ -6,6 +6,15 @@ ingClass:
     internal: nginx-crt-house
     external: nginx-external
 
+ingSvcName:
+  when: "{{ ingress }}"
+  type: str
+  default: "{% if svcName != '' %}{{ svcName }}{% else %}{{ name }}{% endif %}"
+
+ingSvcPortNum:
+  when: "{{ ingress }}"
+  type: int
+
 ingHost:
   when: "{{ ingress }}"
   type: str
@@ -15,7 +24,6 @@ ingHost:
 ingCname:
   when: "{%if ingress and ingress.class == 'nginx-external' %}true{% endif %}"
   type: str
-  default: crt.lol
   help: ingress cname (only if accessible externally!)
 
 ingWebSockets:
@@ -23,6 +31,11 @@ ingWebSockets:
   type: bool
   help: enable web sockets on ingress
   default: no
+
+ingExtraAnnotations:
+  when: "{{ ingress }}"
+  type: str
+  multiline: true
 
 ingPathType:
   when: "{{ ingress }}"

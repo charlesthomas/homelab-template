@@ -7,32 +7,39 @@ labels:
 
 configmap:
   type: bool
-  help: Include configmaps.yaml in Kustomization.
+  help: Include configmaps.yaml in Kustomization?
 
 deployment:
   type: bool
-  help: Include deployments.yaml in Kustomization.
+  help: Include deployments.yaml in Kustomization?
 
 externalSecret:
   type: bool
-  help: Include external-secrets.yaml in Kustomization.
+  help: Include external-secrets.yaml in Kustomization?
 
 service:
   type: bool
-  help: Include services.yaml in Kustomization.
+  help: |-
+    Include services.yaml in Kustomization?
+    TEMPLATED! Say "no" for multiple and / or complicated services.
 
 serviceAccount:
   type: bool
-  help: Include service-accounts.yaml in Kustomization.
+  help: |-
+    Include service-accounts.yaml in Kustomization?
+    TEMPLATED! Say "no" for multiple and / or complicated service-accounts.
 
 ingress:
   type: bool
-  help: Include ingresses.yaml in Kustomization.
-  when: "{{ service }}"
+  help: |-
+    Include ingresses.yaml in Kustomization?
+    TEMPLATED! Say "no" for multiple and / or complicated ingresses.
 
 pvc:
   type: bool
-  help: Include pvcs.yaml in Kustomization.
+  help: |-
+    Include pvcs.yaml in Kustomization?
+    TEMPLATED! Say "no" for multiple and / or complicated PVCs.
 
 backups:
   type: bool
