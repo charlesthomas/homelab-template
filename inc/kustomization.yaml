@@ -39,5 +39,5 @@ sts:
 
 additionalResources:
   type: str
-  help: Additional resources to append to Kustomization.resources.
-  placeholder: certificates.yaml,crds.yaml,rbac.yaml, etc
+  help: Comma-separated list of additional resources to append to Kustomization.resources.
+  placeholder: certificates.yaml,crds.yaml,rbac.yaml etc
