@@ -26,6 +26,9 @@ resources:
 {%- if service %}
 - services.yaml
 {%- endif %}
+{%- if serviceAccount %}
+- service-accounts.yaml
+{%- endif %}
 {%- if sts %}
 - statefulsets.yaml
 {%- endif %}

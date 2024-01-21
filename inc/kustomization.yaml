@@ -21,6 +21,10 @@ service:
   type: bool
   help: Include services.yaml in Kustomization.
 
+serviceAccount:
+  type: bool
+  help: Include service-accounts.yaml in Kustomization.
+
 ingress:
   type: bool
   help: Include ingresses.yaml in Kustomization.

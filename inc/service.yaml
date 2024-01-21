@@ -4,6 +4,11 @@ svcName:
   type: str
   default: "{{ name }}"
 
+svcAccountName:
+  when: "{{ serviceAccount }}"
+  type: str
+  default: "{{ name }}"
+
 svcType:
   when: "{{ service }}"
   type: str
