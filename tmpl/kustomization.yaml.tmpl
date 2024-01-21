@@ -1,0 +1,47 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: {{ name }}
+
+commonLabels:
+  {{ labels }}
+
+resources:
+{%- if configmap %}
+- configmaps.yaml
+{%- endif %}
+{%- if externalSecret %}
+- external-secrets.yaml
+{%- endif %}
+{%- if ingress %}
+- ingresses.yaml
+{%- endif %}
+- namespaces.yaml
+{%- if pvc %}
+- pvcs.yaml
+{%- endif %}
+{%- if backups %}
+- backups.yaml
+{%- endif %}
+{%- if service %}
+- services.yaml
+{%- endif %}
+{%- if serviceAccount %}
+- service-accounts.yaml
+{%- endif %}
+{%- if sts %}
+- statefulsets.yaml
+{%- endif %}
+{%- for res in additionalResources.split(',') %}
+- {{ res }}.yaml
+{%- endfor %}
+
+{%- if helm %}
+helmCharts:
+- name: {{ helmName }}
+  includeCRDs: {{ helmCrds }}
+  releaseName: {{ helmRelease }}
+  repo: {{ helmRepo }}
+  {%- if helmValues != "" %}values: {{ helmValues }}{%- endif %}
+  version: {{ helmVersion }}
+{%- endif %}

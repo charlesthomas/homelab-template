@@ -1,0 +1,23 @@
+---
+backupName:
+  when: "{{ backup }}"
+  type: str
+  default: "{{ name }}"
+
+backupCron:
+  when: "{{ backup }}"
+  type: str
+  default: "0 0 * * *"
+
+backupRetain:
+  when: "{{ backup }}"
+  type: int
+  default: 7
+  help: Number of backups to keep
+
+backupTask:
+  when: "{{ backup }}"
+  type: str
+  choices:
+    backup: backup
+    snapshot: snapshot

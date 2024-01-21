@@ -1,0 +1,39 @@
+---
+helm:
+  type: bool
+  help: Include a helm block in your kustomization.yaml?
+  default: no
+
+helmName:
+  type: str
+  help: The name of the Helm chart
+  default: "{{ name }}"
+  when: "{{ helm }}"
+
+helmRelease:
+  type: str
+  help: The Helm releaseName
+  default: "{{ name }}"
+  when: "{{ helm }}"
+
+helmRepo:
+  type: str
+  help: The URL of the Helm repo
+  when: "{{ helm }}"
+
+helmValues:
+  type: str
+  help: The Helm values.yaml (Leave blank if there isn't one)
+  when: "{{ helm }}"
+
+helmVersion:
+  type: str
+  help: The Helm chart version
+  when: "{{ helm }}"
+
+helmCrds:
+  type: bool
+  default: yes
+  when: "{{ helm }}"
+  help: |-
+  If yes, set includeCRDs: true in helmCharts

@@ -1,0 +1,28 @@
+---
+pvcName:
+  when: "{{ pvc }}"
+  type: str
+  default: "{{ name }}"
+
+pvcAccessMode:
+  when: "{{ pvc }}"
+  type: str
+  choices:
+    ReadWriteOnce: ReadWriteOnce
+    ReadWriteMany: ReadWriteMany
+    ReadOnlyMany: ReadOnlyMany
+    ReadWriteOncePod: ReadWriteOncePod
+
+pvcSize:
+  when: "{{ pvc }}"
+  type: str
+  default: 5Gi
+
+pvcStorageClass:
+  when: "{{ pvc }}"
+  type: str
+  choices:
+    longhorn: longhorn
+    longhorn-retain: longhorn-retain
+    nfs-k3s: nfs-k3s
+    nfs-crticial: nfs-crticial
