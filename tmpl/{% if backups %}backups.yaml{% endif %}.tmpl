@@ -1,0 +1,17 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  name: {{ backupName }}
+  namespace: longhorn # must be longhorn
+spec:
+  concurrency: 1
+  cron: {{ backupCron }}
+  groups:
+  - {{ backupName }}
+  labels:
+    {{ labels }}
+  name: {{ backupName }}
+  retain: {{ backupRetain }}
+  task: {{ backupTask }}
+

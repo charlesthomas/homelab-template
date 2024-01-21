@@ -21,6 +21,10 @@ url:
 ---
 !include inc/ingress.yaml
 ---
+!include inc/pvc.yaml
+---
+!include inc/backup.yaml
+---
 _answers_file: .templated.yaml
 _subdirectory: tmpl
 _templates_suffix: tmpl
