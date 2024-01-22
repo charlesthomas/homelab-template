@@ -1,2 +1,4 @@
 answers_file: .homelab-template.yaml
 org: charlesthomas
+repos:
+  homelab-argocd
