@@ -10,8 +10,7 @@ debug-%: ## debug-SOMETHING shows the value of the SOMETHING variable
 	@echo $(*) = $($(*))
 
 add-repo: ## create a new repo using gh cli, then onboard it
-	@echo this doesn\'t work yet && exit 1
 	read -p "repo name: homelab-" repo && \
 	$(GH_BIN) repo create charlesthomas/homelab-$${repo} --confirm --license mit --public && \
-	$(TEMPLATRON_BIN) onboard 
+	$(TEMPLATRON_BIN) --no-autoclean --clone-root /Users/crthomas/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
 
