@@ -7,8 +7,9 @@ commonLabels:
   {{ labels }}
 
 resources:
-{%- for res in ["argocd-application.yaml", "namespaces.yaml"], resources + additionalResources.split(',') | sort %}
-- {{ res }}.yaml
+{%- set allResources = ["argocd-application.yaml", "namespaces.yaml"] + resources + additionalResources.split(',') %}
+{%- for res in allResources | sort %}
+- {{ res }}
 {%- endfor %}
 
 {%- if helm %}

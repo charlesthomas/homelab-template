@@ -21,9 +21,9 @@ url:
 ---
 !include inc/helm.yaml
 ---
-!include inc/service.yaml
----
 !include inc/ingress.yaml
+---
+!include inc/service.yaml
 ---
 !include inc/pvc.yaml
 ---

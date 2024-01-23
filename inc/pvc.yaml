@@ -1,10 +1,4 @@
 ---
-pvc:
-  type: bool
-  help: |-
-    Include pvcs.yaml in Kustomization?
-    TEMPLATED! Say "no" for multiple and / or complicated PVCs.
-
 pvcName:
   when: "{{ pvc }}"
   type: str

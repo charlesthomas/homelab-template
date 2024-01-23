@@ -1,18 +1,6 @@
 ---
-serviceAccount:
-  type: bool
-  help: |-
-    Render service-accountss.yaml from Template?
-    Say "no" for multiple and / or complicated service-accounts.
-
-service:
-  type: bool
-  help: |-
-    Render services.yaml from Template?
-    Say "no" for multiple and / or complicated services.
-
 svcName:
-  when: "{% ingress or service %}"
+  when: "{{ ingress or service }}"
   type: str
   default: "{{ name }}"
 
@@ -31,7 +19,7 @@ svcType:
     ExternalName: ExternalName
 
 svcPortNum:
-  when: "{% ingress or service %}"
+  when: "{{ ingress or service }}"
   type: int
 
 svcTargetPort:

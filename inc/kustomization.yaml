@@ -26,8 +26,6 @@ resources:
 
 additionalResources:
   type: str
-  placeholder: certificates,ip-address-pools etc
+  placeholder: certificates.yaml,ip-address-pools.yaml etc
   help: |-
     Comma-separated list of additional resources to append to Kustomization.resources.
-    DO NOT include file extension!
-    EG "certificates" NOT "certificates.yaml"

@@ -1,9 +1,8 @@
 ---
-ingress:
-  type: bool
-  help: |-
-    Render ingresses.yaml from Template?
-    Say "no" for multiple and / or complicated ingresses.
+ingName:
+  when: "{{ ingress }}"
+  type: str
+  default: "{{ name }}"
 
 ingClass:
   when: "{{ ingress }}"

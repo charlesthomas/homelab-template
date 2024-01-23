@@ -1,0 +1,30 @@
+---
+backups:
+  type: bool
+  help: |-
+    Render services.yaml from Template?
+    Say "no" for multiple and / or complicated services.
+
+ingress:
+  type: bool
+  help: |-
+    Render ingresses.yaml from Template?
+    Say "no" for multiple and / or complicated ingresses.
+
+pvc:
+  type: bool
+  help: |-
+    Include pvcs.yaml in Kustomization?
+    TEMPLATED! Say "no" for multiple and / or complicated PVCs.
+
+serviceAccount:
+  type: bool
+  help: |-
+    Render service-accounts.yaml from Template?
+    Say "no" for multiple and / or complicated service-accounts.
+
+service:
+  type: bool
+  help: |-
+    Render services.yaml from Template?
+    Say "no" for multiple and / or complicated services.
