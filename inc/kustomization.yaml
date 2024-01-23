@@ -5,52 +5,29 @@ labels:
   multiline: true
   default: "app: {{ name }}"
 
-configmap:
-  type: bool
-  help: Include configmaps.yaml in Kustomization?
-
-deployment:
-  type: bool
-  help: Include deployments.yaml in Kustomization?
-
-externalSecret:
-  type: bool
-  help: Include external-secrets.yaml in Kustomization?
-
-service:
-  type: bool
-  help: |-
-    Include services.yaml in Kustomization?
-    TEMPLATED! Say "no" for multiple and / or complicated services.
-
-serviceAccount:
-  type: bool
-  help: |-
-    Include service-accounts.yaml in Kustomization?
-    TEMPLATED! Say "no" for multiple and / or complicated service-accounts.
-
-ingress:
-  type: bool
-  help: |-
-    Include ingresses.yaml in Kustomization?
-    TEMPLATED! Say "no" for multiple and / or complicated ingresses.
-
-pvc:
-  type: bool
-  help: |-
-    Include pvcs.yaml in Kustomization?
-    TEMPLATED! Say "no" for multiple and / or complicated PVCs.
-
-backups:
-  type: bool
-  help: Include Longhorn RecurringJobs backups.yaml in Kustomization.
-  when: "{{ pvc }}"
-
-sts:
-  type: bool
-  help: Include statefulsets.yaml in Kustomization.
+resources:
+  type: str
+  multiselect: true
+  help: Choose the resources to be included in kustomization.yaml
+  choices:
+    backups: backups.yaml
+    crds: crds.yaml
+    configmaps: configmaps.yaml
+    cronjobs: cronjobs.yaml
+    deployments: deployments.yaml
+    externalsecrets: external-secrets.yaml
+    ingresses: ingresses.yaml
+    pvcs: pvcs.yaml
+    rbac: rbac.yaml
+    secrets: secrets.yaml
+    service-accounts: service-accounts.yaml
+    services: services.yaml
+    statefulsets: statefulsets.yaml
 
 additionalResources:
   type: str
-  placeholder: certificates,crds,rbac etc
-  help: Comma-separated list of additional resources to append to Kustomization.resources. DO NOT include file extension! EG "certificates" NOT "certificates.yaml"
+  placeholder: certificates,ip-address-pools etc
+  help: |-
+    Comma-separated list of additional resources to append to Kustomization.resources.
+    DO NOT include file extension!
+    EG "certificates" NOT "certificates.yaml"

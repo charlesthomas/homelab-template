@@ -1,14 +1,15 @@
 ---
-apiVersion: networking.k8s.io
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: {{ ingName }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ ingHost }}
     {%- if ingress.cname != "" %}
     external-dns.alpha.kubernetes.io/target: {{ ingCname }}
     {%- endif %}
     {%- if ingWebSockets %}
-    nginx.org/websocket-services: {{ ingSvcName }}
+    nginx.org/websocket-services: {{ svcName }}
     {% endif %}
     {%- for extra in ingExtraAnnotations.split("\n") %}
     {{ extra }}
@@ -23,9 +24,9 @@ spec:
             pathType: {{ ingPathType }}
             backend:
               service:
-                name: {{ ingSvcName }}
+                name: {{ svcName }}
                 port:
-                  number: {{ ingSvcPortNum }}
+                  number: {{ svcPortNum }}
   tls:
     - hosts:
       - {{ ingHost }}

@@ -7,32 +7,7 @@ commonLabels:
   {{ labels }}
 
 resources:
-{%- if configmap %}
-- configmaps.yaml
-{%- endif %}
-{%- if externalSecret %}
-- external-secrets.yaml
-{%- endif %}
-{%- if ingress %}
-- ingresses.yaml
-{%- endif %}
-- namespaces.yaml
-{%- if pvc %}
-- pvcs.yaml
-{%- endif %}
-{%- if backups %}
-- backups.yaml
-{%- endif %}
-{%- if service %}
-- services.yaml
-{%- endif %}
-{%- if serviceAccount %}
-- service-accounts.yaml
-{%- endif %}
-{%- if sts %}
-- statefulsets.yaml
-{%- endif %}
-{%- for res in additionalResources.split(',') %}
+{%- for res in ["argocd-application.yaml", "namespaces.yaml"], resources + additionalResources.split(',') | sort %}
 - {{ res }}.yaml
 {%- endfor %}
 

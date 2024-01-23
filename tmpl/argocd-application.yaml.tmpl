@@ -7,11 +7,13 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: {{ name }}
+  project: default
   source:
+    path: .
     repoURL: {{ url }}
     targetRevision: HEAD
   destination:
+    path:
     server: https://kubernetes.default.svc
     namespace: {{ namespace }}
   syncPolicy:
