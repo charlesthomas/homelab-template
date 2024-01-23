@@ -7,7 +7,13 @@ commonLabels:
   {{ labels }}
 
 resources:
-{%- set allResources = ["argocd-application.yaml", "namespaces.yaml"] + resources + additionalResources.split(',') %}
+{%- set allResources = ["argocd-application.yaml", "namespaces.yaml"] %}
+{%- if resources | length > 1 %}
+{%- set allResources = allResources + resources %}
+{%- endif %}
+{%- if additionalResources | length > 1 %}
+{%- set allResources = allResources + additionalResources.split(',') %}
+{%- endif %}
 {%- for res in allResources | sort %}
 - {{ res }}
 {%- endfor %}
