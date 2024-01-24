@@ -14,7 +14,7 @@ ingClass:
 ingHost:
   when: "{{ ingress }}"
   type: str
-  default: "{{ name }}.crt.{% if ingress.class == 'nginx-external' %}lol{% else %}house{% endif %}"
+  default: "{{ name }}.crt.{% if ingClass == 'nginx-external' %}lol{% else %}house{% endif %}"
   help: ingress hostname
 
 ingCname:
