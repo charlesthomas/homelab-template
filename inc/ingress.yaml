@@ -11,15 +11,6 @@ ingClass:
     internal: nginx-crt-house
     external: nginx-external
 
-ingSvcName:
-  when: "{{ ingress }}"
-  type: str
-  default: "{% if svcName != '' %}{{ svcName }}{% else %}{{ name }}{% endif %}"
-
-ingSvcPortNum:
-  when: "{{ ingress }}"
-  type: int
-
 ingHost:
   when: "{{ ingress }}"
   type: str
