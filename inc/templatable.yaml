@@ -2,7 +2,7 @@
 backups:
   type: bool
   help: |-
-    Render services.yaml from Template?
+    Render backups.yaml from Template?
     Say "no" for multiple and / or complicated services.
 
 ingress:
