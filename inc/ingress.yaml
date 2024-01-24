@@ -41,3 +41,8 @@ ingPathType:
     Prefix: Prefix
     ImplementationSpecific: ImplementationSpecific
     Exact: Exact
+
+ingSecret:
+  when: "{{ ingress and ingClass == 'nginx-external' and ingCname != 'crt.lol' }}"
+  type: str
+  default: "{{ ingCname }}"

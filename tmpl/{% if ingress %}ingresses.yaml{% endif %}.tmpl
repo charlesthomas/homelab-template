@@ -30,4 +30,6 @@ spec:
   tls:
     - hosts:
       - {{ ingHost }}
-
+      {%- if ingSecret != "" %}
+      secretName: {{ ingSecret }}
+      {%- endif %}
