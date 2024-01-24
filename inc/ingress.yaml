@@ -18,8 +18,9 @@ ingHost:
   help: ingress hostname
 
 ingCname:
-  when: "{%if ingress and ingress.class == 'nginx-external' %}true{% endif %}"
+  when: "{% if ingress and ingClass == 'nginx-external' %}true{% endif %}"
   type: str
+  default: "crt.{% if ingress.class == 'nginx-external' %}lol{% else %}house{% endif %}"
   help: ingress cname (only if accessible externally!)
 
 ingWebSockets:
