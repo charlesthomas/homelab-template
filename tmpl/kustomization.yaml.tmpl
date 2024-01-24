@@ -7,7 +7,7 @@ commonLabels:
   {{ labels }}
 
 resources:
-{%- set allResources = ["argocd-application.yaml", "namespaces.yaml"] %}
+{%- set allResources = ["namespaces.yaml"] %}
 {%- if resources | length > 1 %}
 {%- set allResources = allResources + resources %}
 {%- endif %}
