@@ -3,9 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: {{ name }}
 
+{%- if labels|length > 0 %}
 commonLabels:
   {{ labels }}
 
+{%- endif %}
 resources:
 {%- set allResources = ["namespaces.yaml"] %}
 {%- if resources | length > 1 %}
