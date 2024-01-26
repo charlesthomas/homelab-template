@@ -45,4 +45,4 @@ ingPathType:
 ingSecret:
   when: "{{ ingress and ingClass == 'nginx-external' and ingCname != 'crt.lol' }}"
   type: str
-  default: "{{ ingCname }}"
+  placeholder: "{{ ingCname }}"
