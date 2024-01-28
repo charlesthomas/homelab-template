@@ -25,6 +25,8 @@ url:
 ---
 !include inc/ingress.yaml
 ---
+!include inc/gethomepage.dev.yaml
+---
 !include inc/service.yaml
 ---
 !include inc/pvc.yaml
