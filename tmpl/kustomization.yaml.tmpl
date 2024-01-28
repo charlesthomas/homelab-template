@@ -3,19 +3,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: {{ name }}
 
-commonAnnotatons:
+commonAnnotations:
   repo: {{ url }}
 
 {%- if labels|length > 0 %}
 commonLabels:
   {{ labels }}
-
 {%- endif %}
+
 {%- if crds %}
 crds:
   - crds/
-
 {%- endif %}
+
 resources:
   - resources/
 
@@ -24,13 +24,18 @@ patches:
   - patches/reloader.yaml
 {%- endif %}
 
-
 {%- if helm %}
 helmCharts:
 - name: {{ helmName }}
-  includeCRDs: {{ helmCrds }}
+  {%- if helmCrds %}
+  includeCRDs: true
+  {%- endif %}
   releaseName: {{ helmRelease }}
   repo: {{ helmRepo }}
-  {%- if helmValues != "" %}values: {{ helmValues }}{%- endif %}
+  {%- if helmValues != "" %}
+  values: {{ helmValues }}
+  {%- endif %}
+  {%- if helmVersion != "" %}
   version: {{ helmVersion }}
+  {%- endif %}
 {%- endif %}
