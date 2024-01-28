@@ -62,6 +62,7 @@ helmCharts:
   {%- if helmCrds %}
   includeCRDs: true
   {%- endif %}
+  namespace: {{ namespace }}
   releaseName: {{ helmRelease }}
   repo: {{ helmRepo }}
   {%- if helmValues != "" %}
