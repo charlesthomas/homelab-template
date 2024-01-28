@@ -17,7 +17,16 @@ crds:
 {%- endif %}
 
 resources:
-  - resources/
+{%- set allResources = ["namespaces.yaml"] %}
+{%- if resources | length > 1 %}
+{%- set allResources = allResources + resources %}
+{%- endif %}
+{%- if additionalResources | length > 1 %}
+{%- set allResources = allResources + additionalResources.split(',') %}
+{%- endif %}
+{%- for res in allResources | sort %}
+- resources/{{ res }}
+{%- endfor %}
 
 {%- if reloader %}
 patches:

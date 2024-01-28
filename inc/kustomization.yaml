@@ -5,7 +5,33 @@ labels:
   multiline: true
   default: "app: {{ name }}"
 
+resources:
+  type: str
+  multiselect: true
+  help: Choose the resources to be included in kustomization.yaml
+  choices:
+    backups: backups.yaml
+    crds: crds.yaml
+    configmaps: configmaps.yaml
+    cronjobs: cronjobs.yaml
+    deployments: deployments.yaml
+    externalsecrets: external-secrets.yaml
+    ingresses: ingresses.yaml
+    pvcs: pvcs.yaml
+    rbac: rbac.yaml
+    secrets: secrets.yaml
+    service-accounts: service-accounts.yaml
+    services: services.yaml
+    statefulsets: statefulsets.yaml
+
+additionalResources:
+  type: str
+  placeholder: certificates.yaml,ip-address-pools.yaml etc
+  help: |-
+    Comma-separated list of additional resources to append to Kustomization.resources.
+
 reloader:
   type: bool
-  help: Enable reloader annotation? (Probably yes if using configmaps, external-secrets, or secrets)
-  default: no
+  help: Enable reloader annotation?
+  default: yes
+  when: "{{ configmaps or externalsecrets or secrets }}"
