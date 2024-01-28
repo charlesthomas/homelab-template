@@ -1,0 +1,30 @@
+name: Version with svu
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: svu
+        id: svu
+        uses: obfu5c8/action-svu@v1
+        with:
+          force-increment: true
+      - name: tag
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/tags/${{ steps.svu.outputs.version }}`,
+              sha: context.sha
+            })
