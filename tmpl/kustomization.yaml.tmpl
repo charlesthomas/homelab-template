@@ -30,7 +30,30 @@ resources:
 
 {%- if reloader %}
 patches:
-  - patches/reloader.yaml
+{%- if 'deployments.yaml' in resources %}
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: all
+      namespace: {{ namespace }}
+      annotations:
+        reloader.stakater.com/auto: "true"
+  target:
+    kind: Deployment
+{%- endif %}
+{%- if 'statefulsets.yaml' in resources %}
+- patch: |-
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: all
+      namespace: {{ namespace }}
+      annotations:
+        reloader.stakater.com/auto: "true"
+  target:
+    kind: StatefulSet
+{%- endif %}
 {%- endif %}
 
 {%- if helm %}

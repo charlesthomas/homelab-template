@@ -33,5 +33,4 @@ additionalResources:
 reloader:
   type: bool
   help: Enable reloader annotation?
-  default: yes
-  when: "{{ configmaps or externalsecrets or secrets }}"
+  default: no
