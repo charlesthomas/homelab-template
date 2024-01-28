@@ -11,6 +11,6 @@ debug-%: ## debug-SOMETHING shows the value of the SOMETHING variable
 
 add-repo: ## create a new repo using gh cli, then onboard it
 	read -p "repo name: homelab-" repo && \
-	$(GH_BIN) repo create charlesthomas/homelab-$${repo} --confirm --license mit --public && \
+	$(GH_BIN) repo create charlesthomas/homelab-$${repo} --license mit --public && \
 	$(TEMPLATRON_BIN) --no-autoclean --clone-root /Users/crthomas/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
 
