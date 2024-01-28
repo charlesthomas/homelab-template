@@ -3,11 +3,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: {{ name }}
 
+commonAnnotations:
+  repo: {{ url }}
+
 {%- if labels|length > 0 %}
 commonLabels:
   {{ labels }}
-
 {%- endif %}
+
+{%- if crds %}
+crds:
+  - crds/
+{%- endif %}
+
 resources:
 {%- set allResources = ["namespaces.yaml"] %}
 {%- if resources | length > 1 %}
@@ -17,15 +25,50 @@ resources:
 {%- set allResources = allResources + additionalResources.split(',') %}
 {%- endif %}
 {%- for res in allResources | sort %}
-- {{ res }}
+- resources/{{ res }}
 {%- endfor %}
+
+{%- if reloader %}
+patches:
+{%- if 'deployments.yaml' in resources %}
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: all
+      namespace: {{ namespace }}
+      annotations:
+        reloader.stakater.com/auto: "true"
+  target:
+    kind: Deployment
+{%- endif %}
+{%- if 'statefulsets.yaml' in resources %}
+- patch: |-
+    apiVersion: apps/v1
+    kind: StatefulSet
+    metadata:
+      name: all
+      namespace: {{ namespace }}
+      annotations:
+        reloader.stakater.com/auto: "true"
+  target:
+    kind: StatefulSet
+{%- endif %}
+{%- endif %}
 
 {%- if helm %}
 helmCharts:
 - name: {{ helmName }}
-  includeCRDs: {{ helmCrds }}
+  {%- if helmCrds %}
+  includeCRDs: true
+  {%- endif %}
+  namespace: {{ namespace }}
   releaseName: {{ helmRelease }}
   repo: {{ helmRepo }}
-  {%- if helmValues != "" %}values: {{ helmValues }}{%- endif %}
+  {%- if helmValues != "" %}
+  values: {{ helmValues }}
+  {%- endif %}
+  {%- if helmVersion != "" %}
   version: {{ helmVersion }}
+  {%- endif %}
 {%- endif %}

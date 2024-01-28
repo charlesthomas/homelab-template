@@ -29,3 +29,8 @@ additionalResources:
   placeholder: certificates.yaml,ip-address-pools.yaml etc
   help: |-
     Comma-separated list of additional resources to append to Kustomization.resources.
+
+reloader:
+  type: bool
+  help: Enable reloader annotation?
+  default: no
