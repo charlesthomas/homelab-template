@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  annotations:
+    reloader.stakater.com/auto: "true"
+---
+apiVersion: v1
+kind: StatefulSet
+metadata:
+  namespace: {{ namespace }}
+  annotations:
+    reloader.stakater.com/auto: "true"

@@ -3,22 +3,27 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: {{ name }}
 
+commonAnnotatons:
+  repo: {{ url }}
+
 {%- if labels|length > 0 %}
 commonLabels:
   {{ labels }}
 
 {%- endif %}
+{%- if crds %}
+crds:
+  - crds/
+
+{%- endif %}
 resources:
-{%- set allResources = ["namespaces.yaml"] %}
-{%- if resources | length > 1 %}
-{%- set allResources = allResources + resources %}
+  - resources/
+
+{%- if reloader %}
+patches:
+  - patches/reloader.yaml
 {%- endif %}
-{%- if additionalResources | length > 1 %}
-{%- set allResources = allResources + additionalResources.split(',') %}
-{%- endif %}
-{%- for res in allResources | sort %}
-- {{ res }}
-{%- endfor %}
+
 
 {%- if helm %}
 helmCharts:
