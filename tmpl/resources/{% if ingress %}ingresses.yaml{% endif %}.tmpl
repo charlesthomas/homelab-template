@@ -5,7 +5,7 @@ metadata:
   name: {{ ingName }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ ingHost }}
-    {%- if ingressCname != "" %}
+    {%- if ingCname != "" %}
     external-dns.alpha.kubernetes.io/target: {{ ingCname }}
     {%- endif %}
     {%- if ingWebSockets %}
