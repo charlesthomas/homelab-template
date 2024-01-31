@@ -5,12 +5,12 @@ metadata:
   name: {{ ingName }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: {{ ingHost }}
-    {%- if ingress.cname != "" %}
+    {%- if ingressCname != "" %}
     external-dns.alpha.kubernetes.io/target: {{ ingCname }}
     {%- endif %}
     {%- if ingWebSockets %}
     nginx.org/websocket-services: {{ svcName }}
-    {% endif %}
+    {%- endif %}
     {%- if homepageEnabled %}
     gethomepage.dev/href: {{ ingHost }}
     gethomepage.dev/enabled: "true"
@@ -20,9 +20,7 @@ metadata:
     gethomepage.dev/name: {{ homepageName }}
     gethomepage.dev/pod-selector: ""
     {%- endif %}
-    {%- for extra in ingExtraAnnotations.split("\n") %}
-    {{ extra }}
-    {%- endfor %}
+    {%- for extra in ingExtraAnnotations.split("\n") %}{{ extra }}{%- endfor %}
 spec:
   ingressClassName: {{ ingClass }}
   rules:

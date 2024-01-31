@@ -29,6 +29,29 @@ ingWebSockets:
   help: enable web sockets on ingress
   default: no
 
+homepageEnabled:
+  when: "{{ ingress }}"
+  type: bool
+  default: yes
+
+homepageName:
+  when: "{{ homepageEnabled }}"
+  type: str
+  default: "{{ name }}"
+
+homepageDescription:
+  when: "{{ homepageEnabled }}"
+  type: str
+
+homepageGroup:
+  when: "{{ homepageEnabled }}"
+  type: str
+
+homepageIcon:
+  when: "{{ homepageEnabled }}"
+  type: str
+  default: "{{ homepageName }}"
+
 ingExtraAnnotations:
   when: "{{ ingress }}"
   type: str
