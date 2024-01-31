@@ -20,7 +20,6 @@ ingHost:
 ingCname:
   when: "{% if ingress and ingClass == 'nginx-external' %}true{% endif %}"
   type: str
-  default: "crt.{% if ingress.class == 'nginx-external' %}lol{% else %}house{% endif %}"
   help: ingress cname (only if accessible externally!)
 
 ingWebSockets:
@@ -66,6 +65,4 @@ ingPathType:
     Exact: Exact
 
 ingSecret:
-  when: "{{ ingress and ingClass == 'nginx-external' and ingCname != 'crt.lol' }}"
   type: str
-  placeholder: "{{ ingCname }}"
