@@ -12,7 +12,7 @@ metadata:
     nginx.org/websocket-services: {{ svcName }}
     {%- endif %}
     {%- if homepageEnabled %}
-    gethomepage.dev/href: {{ ingHost }}
+    gethomepage.dev/href: https://{{ ingHost }}
     gethomepage.dev/enabled: "true"
     gethomepage.dev/description: {{ homepageDescription }}
     gethomepage.dev/group: {{ homepageGroup }}
