@@ -18,7 +18,7 @@ ingHost:
   help: ingress hostname
 
 ingCname:
-  when: "{% if ingress and ingClass == 'nginx-external' %}true{% endif %}"
+  when: "{{ ingress }}"
   type: str
   help: ingress cname (only if accessible externally!)
 
@@ -31,7 +31,7 @@ ingWebSockets:
 homepageEnabled:
   when: "{{ ingress }}"
   type: bool
-  default: yes
+  default: "{% if ingress %}yes{% else %}no{% endif %}"
 
 homepageName:
   when: "{{ homepageEnabled }}"
