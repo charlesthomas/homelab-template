@@ -30,7 +30,7 @@ jobs:
             })
       - uses: addnab/docker-run-action@v3
         env:
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN=test
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
