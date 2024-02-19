@@ -2,8 +2,7 @@ name: Run Templatron
 
 on:
   workflow_run:
-    workflows:
-      - "Version with svu"
+    workflows: ["Version with svu"]
     type:
       - completed
 
@@ -17,4 +16,4 @@ jobs:
           image: ghcr.io/charlesthomas/templatron:0.4.3
           options: --workdir /Users/crthomas/code
           run: |
-            templatron charlesthomas/homelab-template update
+            /venv/bin/poetry run templatron charlesthomas/homelab-template update
