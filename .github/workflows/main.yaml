@@ -35,6 +35,6 @@ jobs:
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
-          options: --workdir /Users/crthomas/code
           run: |
-            /venv/bin/poetry run templatron charlesthomas/homelab-template update
+            mkdir -p /Users/crthomas/code
+            /venv/bin/poetry run templatron --clone-root /Users/crthomas/code charlesthomas/homelab-template update
