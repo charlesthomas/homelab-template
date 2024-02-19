@@ -34,7 +34,7 @@ jobs:
           GIT_AUTHOR_NAME: Charles Thomas
           GIT_COMMITTER_EMAIL: ch@rlesthom.as
           GIT_COMMITTER_NAME: Charles Thomas
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TTTKN }}
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
