@@ -32,7 +32,12 @@ jobs:
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
-          options: -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e  GIT_AUTHOR_EMAIL="ch@rlesthom.as" -e GIT_AUTHOR_NAME="Charles Thomas" -e GIT_COMMITTER_EMAIL="ch@rlesthom.as" -e GIT_COMMITTER_NAME="Charles Thomas"
+          options: -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
+          envs:
+            GIT_AUTHOR_EMAIL="ch@rlesthom.as"
+            GIT_AUTHOR_NAME="Charles Thomas"
+            GIT_COMMITTER_EMAIL="ch@rlesthom.as"
+            GIT_COMMITTER_NAME="Charles Thomas"
           run: |
             mkdir -p /Users/crthomas/code
             /venv/bin/poetry run templatron --clone-root /Users/crthomas/code charlesthomas/homelab-template update
