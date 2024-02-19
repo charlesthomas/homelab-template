@@ -1,16 +1,17 @@
 name: Run Templatron
 
 on:
-  workflow:
+  workflow_run:
     workflows:
       - "Version with svu"
     type:
       - completed
 
-- uses: addnab/docker-run-action@v3
-  with:
-    registry: ghcr.io
-    image: charlesthomas/templatron:0.4.3
-    options: --workdir /Users/crthomas/code
-    run: |
-      templatron charlesthomas/homelab-template update
+jobs:
+  - uses: addnab/docker-run-action@v3
+    with:
+      registry: ghcr.io
+      image: charlesthomas/templatron:0.4.3
+      options: --workdir /Users/crthomas/code
+      run: |
+        templatron charlesthomas/homelab-template update
