@@ -1,4 +1,4 @@
-name: Version with svu
+name: run svu then templatron
 
 on:
   push:
@@ -34,11 +34,11 @@ jobs:
           GIT_AUTHOR_NAME: Charles Thomas
           GIT_COMMITTER_EMAIL: ch@rlesthom.as
           GIT_COMMITTER_NAME: Charles Thomas
-          GITHUB_TOKEN: ${{ secrets.TTTKN }}
+          TTTKN: ${{ secrets.TTTKN }}
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
-          options: -e GITHUB_TOKEN -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
+          options: -e TTTKN -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
           run: |
             mkdir -p /Users/crthomas/code
-            /venv/bin/poetry run templatron --clone-root /Users/crthomas/code charlesthomas/homelab-template update
+            /venv/bin/poetry run templatron --token-variable-name TTTKN --clone-root /Users/crthomas/code charlesthomas/homelab-template update
