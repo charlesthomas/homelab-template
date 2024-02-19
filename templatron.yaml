@@ -2,3 +2,14 @@ answers_file: .homelab-template.yaml
 org: charlesthomas
 repos:
   - homelab-argocd
+  - homelab-code-server
+  - homelab-external-secrets
+  - homelab-jellyfin
+  - homelab-metube
+  - homelab-offsite-backups
+  - homelab-plex
+  - homelab-prowlarr
+  - homelab-radarr
+  - homelab-rsync-seedbox
+  - homelab-sonarr
+  - homelab-zigbee2mqtt
