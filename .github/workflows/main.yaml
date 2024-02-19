@@ -29,7 +29,7 @@ jobs:
               sha: context.sha
             })
       - uses: addnab/docker-run-action@v3
-        envs:
+        env:
           GIT_AUTHOR_EMAIL="ch@rlesthom.as"
           GIT_AUTHOR_NAME="Charles Thomas"
           GIT_COMMITTER_EMAIL="ch@rlesthom.as"
