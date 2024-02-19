@@ -29,11 +29,10 @@ jobs:
               sha: context.sha
             })
       - uses: addnab/docker-run-action@v3
-        env:
-          GITHUB_TOKEN=test
         with:
           registry: ghcr.io
           image: ghcr.io/charlesthomas/templatron:0.4.3
+          options: -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           run: |
             mkdir -p /Users/crthomas/code
             /venv/bin/poetry run templatron --clone-root /Users/crthomas/code charlesthomas/homelab-template update
