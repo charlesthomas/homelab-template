@@ -41,4 +41,4 @@ jobs:
           options: -e TTTKN -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
           run: |
             mkdir -p /Users/crthomas/code
-            /venv/bin/poetry run templatron --token-variable-name TTTKN --clone-root /Users/crthomas/code charlesthomas/homelab-template update
+            /venv/bin/poetry run templatron --token-variable-name TTTKN --clone-root /Users/crthomas/code/charlesthomas charlesthomas/homelab-template update
