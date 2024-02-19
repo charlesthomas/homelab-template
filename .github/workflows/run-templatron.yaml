@@ -7,7 +7,7 @@ on:
     type:
       - completed
 
-uses: addnab/docker-run-action@v3
+- uses: addnab/docker-run-action@v3
   with:
     registry: ghcr.io
     image: charlesthomas/templatron:0.4.3
