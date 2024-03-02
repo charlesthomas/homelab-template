@@ -29,7 +29,7 @@ ingWebSockets:
   default: no
 
 homepageEnabled:
-  when: "{{ ingress }}"
+  when: "{{ 'ingresses.yaml' in resources }}"
   type: bool
   default: "{% if ingress %}yes{% else %}no{% endif %}"
 
