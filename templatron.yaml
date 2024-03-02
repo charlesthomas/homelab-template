@@ -4,10 +4,10 @@ repos:
   - homelab-argocd
   - homelab-code-server
   - homelab-external-secrets
+  - homelab-home-assistant
   - homelab-jellyfin
   - homelab-metube
   - homelab-offsite-backups
-  - homelab-plex
   - homelab-prowlarr
   - homelab-radarr
   - homelab-rsync-seedbox
