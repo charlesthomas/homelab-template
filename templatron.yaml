@@ -12,4 +12,5 @@ repos:
   - homelab-radarr
   - homelab-rsync-seedbox
   - homelab-sonarr
+  - homelab-vault-warden
   - homelab-zigbee2mqtt
