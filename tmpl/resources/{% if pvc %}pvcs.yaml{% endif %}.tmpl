@@ -5,10 +5,10 @@ metadata:
   name: {{ pvcName }}
   namespace: {{ namespace }}
 spec:
-    accessModes:
-    - {{ pvcAccessMode }}
-    resources:
-      requests:
-        storage: {{ pvcSize }}
-    storageClassName: {{ pvcStorageClass }}
-    volumeMode: Filesystem
+  accessModes:
+  - {{ pvcAccessMode }}
+  resources:
+    requests:
+      storage: {{ pvcSize }}
+  storageClassName: {{ pvcStorageClass }}
+  volumeMode: Filesystem

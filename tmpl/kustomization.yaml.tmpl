@@ -8,7 +8,7 @@ commonAnnotations:
 
 {%- if labels|length > 0 %}
 commonLabels:
-  {{ labels }}
+  {{ labels | indent(width=2) }}
 {%- endif %}
 
 {%- if crds %}
