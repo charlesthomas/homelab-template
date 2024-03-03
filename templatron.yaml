@@ -2,6 +2,7 @@ answers_file: .homelab-template.yaml
 org: charlesthomas
 repos:
   - homelab-argocd
+  - homelab-cert-manager
   - homelab-code-server
   - homelab-external-secrets
   - homelab-home-assistant
