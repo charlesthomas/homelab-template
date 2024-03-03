@@ -35,4 +35,6 @@ _answers_file: .templated.yaml
 _subdirectory: tmpl
 _templates_suffix: tmpl
 _skip_if_exists:
+  - .github/dependabot.yml
+  - .gitignore
   - README.md
