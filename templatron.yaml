@@ -9,6 +9,7 @@ repos:
   - homelab-jellyfin
   - homelab-metube
   - homelab-nginx-external
+  - homelab-nginx-internal
   - homelab-offsite-backups
   - homelab-prowlarr
   - homelab-radarr
