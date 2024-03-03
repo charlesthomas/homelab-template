@@ -8,7 +8,7 @@ ingClass:
   when: "{{ ingress }}"
   type: str
   choices:
-    internal: nginx-crt-house
+    internal: nginx-internal
     external: nginx-external
 
 ingHost:
@@ -29,7 +29,7 @@ ingWebSockets:
   default: no
 
 homepageEnabled:
-  when: "{{ 'ingresses.yaml' in resources }}"
+  when: "{{ ingress }}"
   type: bool
   default: "{% if ingress %}yes{% else %}no{% endif %}"
 
@@ -63,6 +63,3 @@ ingPathType:
     Prefix: Prefix
     ImplementationSpecific: ImplementationSpecific
     Exact: Exact
-
-ingSecret:
-  type: str
