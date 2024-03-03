@@ -8,6 +8,7 @@ repos:
   - homelab-home-assistant
   - homelab-jellyfin
   - homelab-metube
+  - homelab-nginx-external
   - homelab-offsite-backups
   - homelab-prowlarr
   - homelab-radarr
