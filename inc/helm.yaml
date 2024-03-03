@@ -24,6 +24,7 @@ helmRepo:
 helmValues:
   type: str
   help: The Helm values.yaml (Leave blank if there isn't one)
+  placeholder: helm/values.yaml
   when: "{{ helm }}"
 
 helmVersion:

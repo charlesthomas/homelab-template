@@ -66,7 +66,7 @@ helmCharts:
   releaseName: {{ helmRelease }}
   repo: {{ helmRepo }}
   {%- if helmValues != "" %}
-  values: {{ helmValues }}
+  valuesFile: {{ helmValues }}
   {%- endif %}
   {%- if helmVersion != "" %}
   version: {{ helmVersion }}
