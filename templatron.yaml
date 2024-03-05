@@ -4,6 +4,7 @@ repos:
   - homelab-argocd
   - homelab-cert-manager
   - homelab-code-server
+  - homelab-descheduler
   - homelab-external-secrets
   - homelab-home-assistant
   - homelab-jellyfin
