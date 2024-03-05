@@ -8,6 +8,7 @@ repos:
   - homelab-external-secrets
   - homelab-home-assistant
   - homelab-homepage
+  - homelab-influxdb
   - homelab-intel-device-plugins-gpu
   - homelab-intel-device-plugins-operator
   - homelab-jellyfin
