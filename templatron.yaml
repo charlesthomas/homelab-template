@@ -19,6 +19,7 @@ repos:
   - homelab-mosquitto
   - homelab-nginx-external
   - homelab-nginx-internal
+  - homelab-node-feature-discovery
   - homelab-offsite-backups
   - homelab-prowlarr
   - homelab-radarr
