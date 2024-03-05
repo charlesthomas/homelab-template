@@ -12,6 +12,7 @@ repos:
   - homelab-intel-device-plugins-gpu
   - homelab-intel-device-plugins-operator
   - homelab-jellyfin
+  - homelab-loki
   - homelab-longhorn
   - homelab-metube
   - homelab-mosquitto
