@@ -14,6 +14,7 @@ repos:
   - homelab-jellyfin
   - homelab-loki
   - homelab-longhorn
+  - homelab-metallb
   - homelab-metube
   - homelab-mosquitto
   - homelab-nginx-external
