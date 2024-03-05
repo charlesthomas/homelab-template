@@ -13,6 +13,7 @@ repos:
   - homelab-jellyfin
   - homelab-longhorn
   - homelab-metube
+  - homelab-mosquitto
   - homelab-nginx-external
   - homelab-nginx-internal
   - homelab-offsite-backups
