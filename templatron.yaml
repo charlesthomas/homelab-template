@@ -21,6 +21,7 @@ repos:
   - homelab-nginx-internal
   - homelab-node-feature-discovery
   - homelab-offsite-backups
+  - homelab-pihole
   - homelab-prowlarr
   - homelab-radarr
   - homelab-reloader
