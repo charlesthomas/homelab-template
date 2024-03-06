@@ -28,5 +28,6 @@ repos:
   - homelab-reloader
   - homelab-rsync-seedbox
   - homelab-sonarr
+  - homelab-telegraf
   - homelab-vault-warden
   - homelab-zigbee2mqtt
