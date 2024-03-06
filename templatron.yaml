@@ -22,6 +22,7 @@ repos:
   - homelab-node-feature-discovery
   - homelab-offsite-backups
   - homelab-pihole
+  - homelab-promtail
   - homelab-prowlarr
   - homelab-radarr
   - homelab-reloader
