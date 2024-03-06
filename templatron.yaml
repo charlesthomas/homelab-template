@@ -17,6 +17,7 @@ repos:
   - homelab-metallb
   - homelab-metube
   - homelab-mosquitto
+  - homelab-nfs-subdir-external-provisioner
   - homelab-nginx-external
   - homelab-nginx-internal
   - homelab-node-feature-discovery
