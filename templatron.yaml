@@ -12,6 +12,7 @@ repos:
   - homelab-intel-device-plugins-gpu
   - homelab-intel-device-plugins-operator
   - homelab-jellyfin
+  - homelab-kube-vip
   - homelab-loki
   - homelab-longhorn
   - homelab-metallb
