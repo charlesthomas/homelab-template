@@ -5,6 +5,7 @@ repos:
   - homelab-cert-manager
   - homelab-code-server
   - homelab-descheduler
+  - homelab-external-dns-cloudflare
   - homelab-external-dns-pihole
   - homelab-external-secrets
   - homelab-home-assistant
