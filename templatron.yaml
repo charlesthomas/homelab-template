@@ -29,6 +29,7 @@ repos:
   - homelab-radarr
   - homelab-reloader
   - homelab-rsync-seedbox
+  - homelab-shlink
   - homelab-sonarr
   - homelab-telegraf
   - homelab-vault-warden
