@@ -16,6 +16,8 @@ jobs:
           clone: true
           forcePatchIncrement: true
           pushTag: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   templatron:
     runs-on: ubuntu-latest
     needs: version
