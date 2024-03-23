@@ -1,9 +1,11 @@
-name: run svu
+name: run svu then templatron
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'tmpl/**'
 
 jobs:
   svu:
@@ -14,6 +16,25 @@ jobs:
         uses: charlesthomas/github-action-svu@v1.0.2+1.12.0
         with:
           clone: true
+          forcePatchIncrement: true
           pushTag: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  templatron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run Templatron
+        uses: addnab/docker-run-action@v3
+        env:
+          GIT_AUTHOR_EMAIL: ch@rlesthom.as
+          GIT_AUTHOR_NAME: Charles Thomas
+          GIT_COMMITTER_EMAIL: ch@rlesthom.as
+          GIT_COMMITTER_NAME: Charles Thomas
+          TTTKN: ${{ secrets.TTTKN }}
+        with:
+          registry: ghcr.io
+          image: ghcr.io/charlesthomas/templatron:0.4.17
+          options: -e TTTKN -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
+          run: |
+            mkdir -p /home/crthomas/code
+            /venv/bin/poetry run templatron --token-variable-name TTTKN --clone-root /home/crthomas/code/charlesthomas charlesthomas/homelab-template update
