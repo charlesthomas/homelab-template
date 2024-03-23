@@ -8,7 +8,7 @@ on:
       - 'tmpl/**'
 
 jobs:
-  svu:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: svu
@@ -20,9 +20,6 @@ jobs:
           pushTag: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  templatron:
-    runs-on: ubuntu-latest
-    steps:
       - name: run Templatron
         uses: addnab/docker-run-action@v3
         env:
