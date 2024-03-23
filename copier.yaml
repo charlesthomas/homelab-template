@@ -43,4 +43,4 @@ _skip_if_exists:
 _migrations:
   - version: v1.7.0
     before:
-      - mkdir argocd && mv *-argocd-application.yaml argocd/
+      - mkdir argocd && mv {{ name }}-argocd-application.yaml argocd/{{ name }}.yaml
