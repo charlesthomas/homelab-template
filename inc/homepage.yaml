@@ -1,18 +1,18 @@
 homepageName:
-  when: "{{ homepage }}"
+  when: "{{ homepageEnabled }}"
   type: str
   default: "{{ name }}"
 
 homepageDescription:
-  when: "{{ homepage }}"
+  when: "{{ homepageEnabled }}"
   type: str
 
 homepageGroup:
-  when: "{{ homepage }}"
+  when: "{{ homepageEnabled }}"
   type: str
 
 homepageIcon:
-  when: "{{ homepage }}"
+  when: "{{ homepageEnabled }}"
   type: str
   default: "{{ homepageName | lower }}"
 
