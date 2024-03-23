@@ -28,8 +28,10 @@ resources:
 - resources/{{ res }}
 {%- endfor %}
 
-{%- if reloader %}
+{%- if reloader or homepageEnabled %}
 patches:
+{%- endif %}
+{%- if reloader %}
 {%- if 'deployments.yaml' in resources %}
 - patch: |-
     apiVersion: apps/v1
@@ -54,6 +56,24 @@ patches:
   target:
     kind: StatefulSet
 {%- endif %}
+{%- endif %}
+{%- if homepageEnabled %}
+- patch: |-
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: {{ ingName }}
+      namespace: {{ namespace }}
+      annotations:
+        gethomepage.dev/href: https://{{ ingHost }}
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/description: {{ homepageDescription }}
+        gethomepage.dev/group: {{ homepageGroup }}
+        gethomepage.dev/icon: {{ homepageIcon }}
+        gethomepage.dev/name: {{ homepageName }}
+        gethomepage.dev/pod-selector: ""
+  target:
+    kind: Ingress
 {%- endif %}
 
 {%- if helm %}

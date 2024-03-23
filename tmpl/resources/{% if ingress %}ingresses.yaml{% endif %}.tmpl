@@ -11,14 +11,6 @@ metadata:
     {%- if ingWebSockets %}
     nginx.org/websocket-services: {{ svcName }}
     {%- endif %}
-    {%- if homepageEnabled %}
-    gethomepage.dev/href: https://{{ ingHost }}
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/description: {{ homepageDescription }}
-    gethomepage.dev/group: {{ homepageGroup }}
-    gethomepage.dev/icon: {{ homepageIcon }}
-    gethomepage.dev/name: {{ homepageName }}
-    gethomepage.dev/pod-selector: ""
     {%- endif %}
     {%- for extra in ingExtraAnnotations.split("\n") %}{{ extra }}{%- endfor %}
 spec:

@@ -1,0 +1,18 @@
+homepageName:
+  when: "{{ homepage }}"
+  type: str
+  default: "{{ name }}"
+
+homepageDescription:
+  when: "{{ homepage }}"
+  type: str
+
+homepageGroup:
+  when: "{{ homepage }}"
+  type: str
+
+homepageIcon:
+  when: "{{ homepage }}"
+  type: str
+  default: "{{ homepageName | lower }}"
+

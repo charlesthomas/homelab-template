@@ -34,3 +34,8 @@ reloader:
   type: bool
   help: Enable reloader annotation?
   default: no
+
+homepageEnabled:
+  type: bool
+  default: yes
+  help: Enable HomePage annotation?

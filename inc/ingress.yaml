@@ -1,6 +1,6 @@
 ---
 ingName:
-  when: "{{ ingress }}"
+  when: "{{ ingress or homepageEnabled }}"
   type: str
   default: "{{ name }}"
 
@@ -12,7 +12,7 @@ ingClass:
     external: nginx-external
 
 ingHost:
-  when: "{{ ingress }}"
+  when: "{{ ingress or homepageEnabled }}"
   type: str
   default: "{{ name }}.crt.{% if ingClass == 'nginx-external' %}lol{% else %}house{% endif %}"
   help: ingress hostname
@@ -27,29 +27,6 @@ ingWebSockets:
   type: bool
   help: enable web sockets on ingress
   default: no
-
-homepageEnabled:
-  when: "{{ ingress }}"
-  type: bool
-  default: "{% if ingress %}yes{% else %}no{% endif %}"
-
-homepageName:
-  when: "{{ homepageEnabled }}"
-  type: str
-  default: "{{ name }}"
-
-homepageDescription:
-  when: "{{ homepageEnabled }}"
-  type: str
-
-homepageGroup:
-  when: "{{ homepageEnabled }}"
-  type: str
-
-homepageIcon:
-  when: "{{ homepageEnabled }}"
-  type: str
-  default: "{{ homepageName | lower }}"
 
 ingExtraAnnotations:
   when: "{{ ingress }}"
