@@ -8,6 +8,7 @@ repos:
   - homelab-external-dns-cloudflare
   - homelab-external-dns-pihole
   - homelab-external-secrets
+  - homelab-grafana
   - homelab-home-assistant
   - homelab-homepage
   - homelab-influxdb
