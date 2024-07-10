@@ -4,7 +4,6 @@ repos:
   - homelab-argocd
   - homelab-cert-manager
   - homelab-code-server
-  - homelab-descheduler
   - homelab-external-dns-cloudflare
   - homelab-external-dns-pihole
   - homelab-external-secrets
@@ -24,7 +23,6 @@ repos:
   - homelab-nfs-subdir-external-provisioner
   - homelab-nginx-external
   - homelab-nginx-internal
-  - homelab-node-feature-discovery
   - homelab-offsite-backups
   - homelab-pihole
   - homelab-promtail
