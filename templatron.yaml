@@ -1,6 +1,7 @@
 answers_file: .homelab-template.yaml
 org: charlesthomas
 repos:
+  - homelab-actualbudget
   - homelab-argocd
   - homelab-cert-manager
   - homelab-code-server
