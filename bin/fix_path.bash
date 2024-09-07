@@ -6,6 +6,10 @@ ROOT=$2
 REPO=$3
 ANSWERSFILE=$4
 
+if [[ "${OPERATION}" != "updating" ]]; then
+    exit 0
+fi
+
 tmp=$(mktemp)
 
 cd $ROOT/$REPO
