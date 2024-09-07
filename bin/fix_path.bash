@@ -6,9 +6,13 @@ ROOT=$2
 REPO=$3
 ANSWERSFILE=$4
 
+tmp=$(mktemp)
+
 cd $ROOT/$REPO
 
-yq -i '._src_path="/Users/crthomas/code/charlesthomas/homelab-template"' $ANSWERSFILE
+cat $ANSWERSFILE | sed 's/_src_path: \/home/_src_path: \/Users/' > $tmp
+mv $tmp $ANSWERSFILE
+
 test -z "$(git status --porcelain)" && exit 0
 
 git add $ANSWERSFILE
