@@ -1,5 +1,4 @@
 #!/bin/bash
-set -ex
 
 OPERATION=$1
 ROOT=$2
