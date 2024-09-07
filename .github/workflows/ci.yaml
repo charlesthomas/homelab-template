@@ -28,7 +28,7 @@ jobs:
           TTTKN: ${{ secrets.TTTKN }}
         with:
           registry: ghcr.io
-          image: ghcr.io/charlesthomas/templatron:0.4.59
+          image: ghcr.io/charlesthomas/templatron:0.4.61
           options: -e TTTKN -e GIT_AUTHOR_EMAIL -e GIT_AUTHOR_NAME -e GIT_COMMITTER_EMAIL -e GIT_COMMITTER_NAME
           run: |
             mkdir -p /Users/crthomas/code
