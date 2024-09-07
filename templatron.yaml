@@ -1,4 +1,6 @@
 answers_file: .homelab-template.yaml
+hooks:
+  post-clone: bin/fix_path.bash
 org: charlesthomas
 repos:
   - homelab-actualbudget
