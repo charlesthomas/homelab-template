@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ pvcName }}
   namespace: {{ namespace }}
+  labels:
+    {%- if backups %}recurring-job.longhorn.io/{{ backupName }}=enabled{% endif %}
 spec:
   accessModes:
   - {{ pvcAccessMode }}
