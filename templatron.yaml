@@ -31,6 +31,7 @@ repos:
   - homelab-promtail
   - homelab-prowlarr
   - homelab-radarr
+  - homelab-readarr
   - homelab-reloader
   - homelab-rsync-seedbox
   - homelab-shlink
