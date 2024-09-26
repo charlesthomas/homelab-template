@@ -1,41 +1,5 @@
 answers_file: .homelab-template.yaml
+autoscan: true
 hooks:
   post-clone: bin/fix_path.bash
 org: charlesthomas
-repos:
-  - homelab-actualbudget
-  - homelab-argocd
-  - homelab-cert-manager
-  - homelab-code-server
-  - homelab-external-dns-cloudflare
-  - homelab-external-dns-pihole
-  - homelab-external-secrets
-  - homelab-grafana
-  - homelab-home-assistant
-  - homelab-homepage
-  - homelab-influxdb
-  - homelab-intel-device-plugins-gpu
-  - homelab-intel-device-plugins-operator
-  - homelab-jellyfin
-  - homelab-kube-vip
-  - homelab-loki
-  - homelab-longhorn
-  - homelab-metallb
-  - homelab-metube
-  - homelab-mosquitto
-  - homelab-nfs-subdir-external-provisioner
-  - homelab-nginx-external
-  - homelab-nginx-internal
-  - homelab-offsite-backups
-  - homelab-pihole
-  - homelab-promtail
-  - homelab-prowlarr
-  - homelab-radarr
-  - homelab-readarr
-  - homelab-reloader
-  - homelab-rsync-seedbox
-  - homelab-shlink
-  - homelab-sonarr
-  - homelab-telegraf
-  - homelab-vault-warden
-  - homelab-zigbee2mqtt
