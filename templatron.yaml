@@ -1,5 +1,12 @@
 answers_file: .homelab-template.yaml
 autoscan: true
+dependents:
+  homelab-stack:
+    from: argocd/*.yaml
+    to: apps/
+  homelab-grafana:
+    from: grafana/*.json
+    to: dashboards/
 hooks:
   post-clone: bin/fix_path.bash
 org: charlesthomas
