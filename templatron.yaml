@@ -2,4 +2,5 @@ answers_file: .homelab-template.yaml
 autoscan: true
 hooks:
   post-clone: bin/fix_path.bash
+  post-copier: bin/install_hooks.bash
 org: charlesthomas
