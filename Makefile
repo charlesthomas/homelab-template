@@ -15,3 +15,7 @@ add-repo: ## create a new repo using gh cli, then onboard it
 	$(TEMPLATRON_BIN) --no-autoclean --clone-root ${HOME}/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
 
 new-repo: add-repo ## new-repo is an alias for add-repo b/c i can't remember which is correct
+
+update-repo: ## re-onboard an existing repo
+	read -p "repo name: homelab-" repo && \
+	$(TEMPLATRON_BIN) --no-autoclean --clone-root ${HOME}/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
