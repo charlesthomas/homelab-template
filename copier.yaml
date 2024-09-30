@@ -39,4 +39,5 @@ _templates_suffix: tmpl
 _skip_if_exists:
   - .github/dependabot.yml
   - .gitignore
+  - argocd/*.yaml
   - README.md
