@@ -9,6 +9,7 @@ mkdir -p $ROOT/$REPO/.git/hooks/
 
 for hook in $(ls $ROOT/$REPO/hooks); do
     if [ ! -e $ROOT/$REPO/.git/hooks/$hook ]; then
+        chmod +x $ROOT/$REPO/hooks/$hook
         ln -s $ROOT/$REPO/hooks/$hook $ROOT/$REPO/.git/hooks/$hook
     fi
 done
