@@ -24,17 +24,23 @@ function reset_destination {
     git -C ../$1 stash pop
 }
 
-branch=$(setup_destination homelab-stack)
-mkdir -p ../homelab-stack/apps
-cp argocd/{{ name }}.yaml ../homelab-stack/apps/
-push homelab-stack apps/{{ name }}.yaml
-reset_destination homelab-stack $branch
+files_changed=$(git diff --name-only HEAD HEAD~1)
 
-branch=$(setup_destination homelab-grafana)
-mkdir -p ../homelab-grafana/dashboards
-cp grafana/*.json ../homelab-grafana/dashboards/
-pushd ../homelab-grafana
-./generate-dashboards.sh
-popd
-push homelab-grafana dashboards/*.json
-reset_destination homelab-grafana $branch
+if [[ "${files_changed}" =~ "argocd" ]]; then
+    branch=$(setup_destination homelab-stack)
+    mkdir -p ../homelab-stack/apps
+    cp argocd/{{ name }}.yaml ../homelab-stack/apps/
+    push homelab-stack apps/{{ name }}.yaml
+    reset_destination homelab-stack $branch
+fi
+
+if [[ "${files_changed}" =~ "grafana" ]]; then
+    branch=$(setup_destination homelab-grafana)
+    mkdir -p ../homelab-grafana/dashboards
+    cp grafana/*.json ../homelab-grafana/dashboards/
+    pushd ../homelab-grafana
+    ./generate-dashboards.sh
+    popd
+    push homelab-grafana dashboards/*.json
+    reset_destination homelab-grafana $branch
+fi
