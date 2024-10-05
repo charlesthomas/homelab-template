@@ -14,6 +14,12 @@ add-repo: ## create a new repo using gh cli, then onboard it
 	$(GH_BIN) repo create charlesthomas/homelab-$${repo} --license mit --public && \
 	$(TEMPLATRON_BIN) --no-autoclean --clone-root ${HOME}/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
 
+fix-repo: ## run templatron fix
+	read -p "repo name: homelab-" repo && \
+	read -p "existing branch: " branch && \
+	$(TEMPLATRON_BIN) --no-autoclean --clone-root ${HOME}/code/charlesthomas \
+	charlesthomas/homelab-template fix charlesthomas/homelab-$${repo} $${branch}
+
 new-repo: add-repo ## new-repo is an alias for add-repo b/c i can't remember which is correct
 
 update-repo: ## re-onboard an existing repo
