@@ -40,4 +40,5 @@ _skip_if_exists:
   - .github/dependabot.yml
   - .gitignore
   - argocd/*.yaml
+  - grafana/*.yaml
   - README.md
