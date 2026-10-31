@@ -31,7 +31,7 @@ url:
 ---
 !include inc/pvc.yaml
 ---
-!include inc/backup.yaml
+!include inc/cnpg.yaml
 ---
 _answers_file: .templated.yaml
 _subdirectory: tmpl
