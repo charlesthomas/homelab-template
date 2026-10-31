@@ -39,5 +39,5 @@ _templates_suffix: tmpl
 _skip_if_exists:
   - .gitignore
   - argocd/*.yaml
-  - grafana/*.yaml
+  - grafana/*.json
   - README.md

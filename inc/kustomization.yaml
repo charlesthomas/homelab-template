@@ -39,3 +39,8 @@ homepageEnabled:
   type: bool
   default: no
   help: Enable HomePage annotation?
+
+grafanaDashboard:
+  type: bool
+  default: yes
+  help: Ship grafana/{{ name }}.json as a ConfigMap for the Grafana sidecar to pick up?

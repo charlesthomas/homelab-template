@@ -20,7 +20,7 @@ crds:
 
 resources:
 {%- set allResources = ["namespaces.yaml"] %}
-{%- if resources | length > 1 %}
+{%- if resources | length > 0 %}
 {%- set allResources = allResources + resources %}
 {%- endif %}
 {%- if additionalResources | length > 1 %}
@@ -93,4 +93,15 @@ helmCharts:
   {%- if helmVersion != "" %}
   version: {{ helmVersion }}
   {%- endif %}
+{%- endif %}
+
+{%- if grafanaDashboard %}
+configMapGenerator:
+- name: grafana-dashboard-{{ name }}
+  files:
+  - grafana/{{ name }}.json
+  options:
+    disableNameSuffixHash: true
+    labels:
+      grafana_dashboard: "1"
 {%- endif %}
