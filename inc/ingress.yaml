@@ -21,6 +21,7 @@ ingCname:
   when: "{{ ingress }}"
   type: str
   help: ingress cname (only if accessible externally!)
+  placeholder: crt.lol
 
 ingWebSockets:
   when: "{{ ingress }}"

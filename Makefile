@@ -20,7 +20,10 @@ fix-repo: ## run templatron fix
 
 new-repo: add-repo ## new-repo is an alias for add-repo b/c i can't remember which is correct
 
-onboard-repo: add-repo ## run templatron onboard
+check-templatron:
+	@command -v templatron >/dev/null || { echo "templatron is not installed (not found in \$$PATH)"; exit 1; }
+
+onboard-repo: check-templatron add-repo ## run templatron onboard
 	bin/onboard-repo.bash
 
 repo-settings: ## apply standard GitHub settings to an existing repo
