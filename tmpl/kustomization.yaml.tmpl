@@ -7,8 +7,10 @@ commonAnnotations:
   repo: {{ url }}
 
 {%- if labels|length > 0 %}
-commonLabels:
-  {{ labels | indent(width=2) }}
+labels:
+- includeSelectors: true
+  pairs:
+    {{ labels | indent(width=4) }}
 {%- endif %}
 
 {%- if crds %}
