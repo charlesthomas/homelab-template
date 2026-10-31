@@ -1,0 +1,40 @@
+---
+cnpg:
+  type: bool
+  help: Create a CloudNativePG Postgres cluster (postgres.yaml)?
+  default: no
+
+cnpgName:
+  when: "{{ cnpg }}"
+  type: str
+  default: postgres
+
+cnpgDatabase:
+  when: "{{ cnpg }}"
+  type: str
+  default: "{{ name }}"
+
+cnpgOwner:
+  when: "{{ cnpg }}"
+  type: str
+  default: "{{ name }}"
+
+cnpgImage:
+  when: "{{ cnpg }}"
+  type: str
+  default: ghcr.io/cloudnative-pg/postgresql
+
+cnpgTag:
+  when: "{{ cnpg }}"
+  type: str
+  default: "18.6"
+
+cnpgSize:
+  when: "{{ cnpg }}"
+  type: str
+  default: 5Gi
+
+cnpgBitwardenItem:
+  when: "{{ cnpg }}"
+  type: str
+  help: Bitwarden item UUID holding the database username and password

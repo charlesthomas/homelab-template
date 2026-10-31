@@ -10,13 +10,13 @@ resources:
   multiselect: true
   help: Choose the resources to be included in kustomization.yaml
   choices:
-    backups: backups.yaml
     crds: crds.yaml
     configmaps: configmaps.yaml
     cronjobs: cronjobs.yaml
     deployments: deployments.yaml
     externalsecrets: external-secrets.yaml
     ingresses: ingresses.yaml
+    postgres: postgres.yaml
     pvcs: pvcs.yaml
     rbac: rbac.yaml
     secrets: secrets.yaml

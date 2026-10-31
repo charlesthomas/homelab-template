@@ -18,3 +18,5 @@ $GH_BIN repo create charlesthomas/homelab-${repo} --license mit --public
 read -p "category (for homelab/README.md): " category
 $GH_BIN repo edit charlesthomas/homelab-${repo} --add-topic homelab
 $GH_BIN repo edit charlesthomas/homelab-${repo} --add-topic homelab-${category}
+
+bin/repo-settings.bash homelab-${repo}

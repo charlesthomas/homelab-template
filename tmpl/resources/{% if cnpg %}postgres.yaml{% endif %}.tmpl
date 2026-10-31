@@ -1,0 +1,60 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: {{ cnpgName }}-auth
+  namespace: {{ namespace }}
+spec:
+  target:
+    name: {{ cnpgName }}-auth
+    deletionPolicy: Delete
+    template:
+      type: kubernetes.io/basic-auth
+  data:
+    - secretKey: password
+      remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        key: {{ cnpgBitwardenItem }}
+        metadataPolicy: None
+        property: password
+      sourceRef:
+        storeRef:
+          name: bitwarden-login
+          kind: ClusterSecretStore
+    - secretKey: username
+      remoteRef:
+        conversionStrategy: Default
+        decodingStrategy: None
+        key: {{ cnpgBitwardenItem }}
+        metadataPolicy: None
+        property: username
+      sourceRef:
+        storeRef:
+          name: bitwarden-login
+          kind: ClusterSecretStore
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ cnpgName }}
+  namespace: {{ namespace }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true,Prune=false,Delete=false
+spec:
+  instances: 1
+  imageName: {{ cnpgImage }}:{{ cnpgTag }}
+  enablePDB: false
+  inheritedMetadata:
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9187"
+  storage:
+    size: {{ cnpgSize }}
+    storageClass: longhorn-retain
+  bootstrap:
+    initdb:
+      database: {{ cnpgDatabase }}
+      owner: {{ cnpgOwner }}
+      secret:
+        name: {{ cnpgName }}-auth

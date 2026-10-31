@@ -23,6 +23,10 @@ new-repo: add-repo ## new-repo is an alias for add-repo b/c i can't remember whi
 onboard-repo: add-repo ## run templatron onboard
 	bin/onboard-repo.bash
 
+repo-settings: ## apply standard GitHub settings to an existing repo
+	read -p "repo name: homelab-" repo && \
+	bin/repo-settings.bash homelab-$${repo}
+
 update-repo: ## re-onboard an existing repo
 	read -p "repo name: homelab-" repo && \
 	$(TEMPLATRON_BIN) --no-autoclean --clone-root ${HOME}/code/charlesthomas charlesthomas/homelab-template onboard charlesthomas/homelab-$${repo}
